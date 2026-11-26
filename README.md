@@ -1,8 +1,10 @@
-# Ezer Audit 审阅降级版
+# Ezer Audit 学习交流版
 
-给老师审阅的开源降级后端。阶段结构已拆开，商业效果没有随结构开放。
+> 仅供学习交流。这是降级示例，不是弈泽（Ezer）商业版本，不能用于生产或商用。
 
-这不是生产系统。私有历史没有带入本仓库。详见 [REVIEW_NOTICE.md](REVIEW_NOTICE.md)。
+公开仓库：<https://github.com/ezercc/ezer-audit-learning>
+
+阶段结构已拆开，商业效果没有随结构开放。私有历史没有带入本仓库。详见 [REVIEW_NOTICE.md](REVIEW_NOTICE.md) 和 [LICENSE](LICENSE)。
 
 ## 结构
 
@@ -43,4 +45,4 @@ python3 -m ezer_audit_review serve --port 8765
 
 ## 边界
 
-本仓库没有上游远程。未发布。回退方式是删除本目录。
+本仓库仅供学习交流。公开地址是 <https://github.com/ezercc/ezer-audit-learning>。它不是商业版本，也不授予商用许可。
