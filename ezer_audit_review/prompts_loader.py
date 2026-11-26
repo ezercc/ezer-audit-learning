@@ -25,12 +25,10 @@ def prompt_profile(lang: str) -> Dict[str, str]:
         "q": load_prompt("q.txt"),
         "b": load_prompt(b_name),
         "c": load_prompt(c_name),
+        "i": load_prompt("i.txt"),
+        "o": load_prompt("o.txt"),
     }
     digest = hashlib.sha256("\n".join(loaded.values()).encode("utf-8")).hexdigest()[:12]
-    return {
-        "q": loaded["q"],
-        "b": loaded["b"],
-        "c": loaded["c"],
-        "id": f"review-short-{digest}",
-        "effect": "clamped",
-    }
+    loaded["id"] = f"review-short-{digest}"
+    loaded["effect"] = "clamped"
+    return loaded

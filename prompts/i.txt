@@ -1,0 +1,3 @@
+审阅版不整理外部信息。
+只输出 JSON：{"status":"unavailable","topics":[]}。
+不要检索，不要聚类。

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "review://schemas/review_result_v1.json",
+  "title": "Ezer Audit Review Result",
+  "type": "object",
+  "required": ["task_id", "profile", "final_status", "summary", "cards", "stage_reports", "meta"],
+  "properties": {
+    "profile": {"const": "degraded"},
+    "final_status": {"enum": ["PASS_WITH_WARNINGS", "NO_VALID_CONCLUSION"]},
+    "cards": {"type": "array", "maxItems": 3},
+    "stage_reports": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["stage", "module", "effect", "commercial"],
+        "properties": {"commercial": {"const": false}}
+      }
+    },
+    "meta": {
+      "type": "object",
+      "required": ["allows_trusted", "live_data", "commercial"],
+      "properties": {
+        "allows_trusted": {"const": false},
+        "live_data": {"const": false},
+        "commercial": {"const": false}
+      }
+    }
+  }
+}

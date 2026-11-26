@@ -1,23 +1,24 @@
 # Ezer Audit 审阅降级版
 
-给老师审阅的开源降级后端。它保留阶段链路，但去掉了关键信息，并故意降低提示词和效果路径。
+给老师审阅的开源降级后端。阶段结构已拆开，商业效果没有随结构开放。
 
 这不是生产系统。私有历史没有带入本仓库。详见 [REVIEW_NOTICE.md](REVIEW_NOTICE.md)。
 
-## 链路
+## 结构
 
-解析请求 → 读取本地样例 → 记录一条不执行的查询 → 标准化 → 三张短卡片 → 硬门 → 跳过产业整理和经营展望 → 清单复核 → 交付。
+`resolver -> fetcher -> planner -> normalizer -> router -> analyzer -> gate -> industry -> outlook -> auditor -> summarizer`
 
-图示见 [docs/chain.md](docs/chain.md)。去掉的类别见 [docs/removed.md](docs/removed.md)。
+图示见 [docs/architecture.md](docs/architecture.md)。降级对照见 [docs/downgrade_matrix.md](docs/downgrade_matrix.md)。去掉的类别见 [docs/removed.md](docs/removed.md)。
 
 ## 降级
 
-- 提示词只有几行，要求列数字，不要求质量判断。
+- 提示词只有几行，要求列数字或返回不可用。
 - 默认使用本地模板，不调用模型服务。
 - 历史最多四个期间，样例只有营收和净利润。
 - 只出三张短卡片，每段不超过 60 字。
-- 不补数，不回退到另一个模型，不能给出 `TRUSTED`。
-- 产业整理和经营展望固定跳过。
+- 不补数，不回退到另一个模型，不能给出高置信结论。
+- 产业阶段返回空主题，展望阶段返回不可用。
+- 打开已删除能力的环境变量会使本次运行失败关闭。
 - 接口只监听 `127.0.0.1`。
 
 ## 运行
